@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDS_RSA", "EDS_RSA\EDS_RSA.csproj", "{44364E14-E242-4E9F-9772-1DEDA8A87077}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44364E14-E242-4E9F-9772-1DEDA8A87077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44364E14-E242-4E9F-9772-1DEDA8A87077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44364E14-E242-4E9F-9772-1DEDA8A87077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44364E14-E242-4E9F-9772-1DEDA8A87077}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
