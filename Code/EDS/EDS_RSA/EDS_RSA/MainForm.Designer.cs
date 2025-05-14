@@ -29,7 +29,6 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
-        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
         pLabel = new System.Windows.Forms.Label();
         qLabel = new System.Windows.Forms.Label();
         dLabel = new System.Windows.Forms.Label();
@@ -53,12 +52,12 @@ partial class MainForm
         EDSLabel = new System.Windows.Forms.Label();
         edsTextBox = new System.Windows.Forms.TextBox();
         menuStrip1 = new System.Windows.Forms.MenuStrip();
-        saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
         SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
-
+        открытьПодписанныйToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
@@ -268,43 +267,40 @@ partial class MainForm
         // 
         menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
         menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-       menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem });
-       menuStrip1.Location = new System.Drawing.Point(0, 0);
+        menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem });
+        menuStrip1.Location = new System.Drawing.Point(0, 0);
         menuStrip1.Name = "menuStrip1";
-        menuStrip1.Size = new System.Drawing.Size(202, 24);
+        menuStrip1.Size = new System.Drawing.Size(77, 33);
         menuStrip1.TabIndex = 22;
         menuStrip1.Text = "menuStrip1";
-        
-        fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.openToolStripMenuItem, this.saveToolStripMenuItem });
-        fileToolStripMenuItem.Name = "файлToolStripMenuItem";
-        fileToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+        // 
+        // fileToolStripMenuItem
+        // 
+        fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripMenuItem, saveToolStripMenuItem, открытьПодписанныйToolStripMenuItem });
+        fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+        fileToolStripMenuItem.Size = new System.Drawing.Size(69, 29);
         fileToolStripMenuItem.Text = "Файл";
-        fileToolStripMenuItem.Enabled = true;
-        // 
-        // saveToolStripMenuItem
-        // 
-        saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-        saveToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
-        saveToolStripMenuItem.Text = "Сохранить";
-        saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
         // 
         // openToolStripMenuItem
         // 
         openToolStripMenuItem.Name = "openToolStripMenuItem";
-        openToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
+        openToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
         openToolStripMenuItem.Text = "Открыть";
         openToolStripMenuItem.Click += openToolStripMenuItem_Click;
         // 
-        // файлToolStripMenuItem
+        // saveToolStripMenuItem
         // 
-      
-        // поискToolStripMenuItem
+        saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+        saveToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
+        saveToolStripMenuItem.Text = "Сохранить";
+        saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
         // 
-       
+        // открытьПодписанныйToolStripMenuItem
         // 
-        // выделитьвсеToolStripMenuItem1
-        // 
-   
+        открытьПодписанныйToolStripMenuItem.Name = "открытьПодписанныйToolStripMenuItem";
+        открытьПодписанныйToolStripMenuItem.Size = new System.Drawing.Size(300, 34);
+        открытьПодписанныйToolStripMenuItem.Text = "Открыть подписанный";
+        открытьПодписанныйToolStripMenuItem.Click += открытьПодписанныйToolStripMenuItem_Click;
         // 
         // MainForm
         // 
@@ -343,9 +339,11 @@ partial class MainForm
         ResumeLayout(false);
         PerformLayout();
     }
-    
+
+    private System.Windows.Forms.ToolStripMenuItem открытьПодписанныйToolStripMenuItem;
+
     //   private System.Windows.Forms.ToolStripDropDownMenu toolStripDropDownMenu1;
-    private ToolStripMenuItem fileToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
 

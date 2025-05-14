@@ -135,7 +135,7 @@ public partial class MainForm : Form
     {
         if (SaveFileDialog.ShowDialog() != DialogResult.Cancel)
         {
-            File.WriteAllText(SaveFileDialog.FileName, sourceTextBox.Text + Environment.NewLine + $"Подпись: {edsTextBox.Text}");
+            File.WriteAllText(SaveFileDialog.FileName, sourceTextBox.Text + Environment.NewLine + $"{edsTextBox.Text}");
         }
     }
     private void checkRadioButton_CheckedChanged_1(object sender, EventArgs e)
@@ -161,5 +161,25 @@ public partial class MainForm : Form
             }
             
         }
+    }
+
+    private void открытьПодписанныйToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (OpenFileDialog.ShowDialog() != DialogResult.Cancel)
+        {
+            sourceTextBox.Text = File.ReadAllText(OpenFileDialog.FileName);
+            string[] lines = File.ReadAllLines(OpenFileDialog.FileName); // Читаем файл построчно
+
+            if (lines.Length == 0)
+            {
+                OpenedFileBytes = null; // Если файл пустой, устанавливаем null
+            }
+            else
+            {
+                string textWithoutLastLine = string.Join(Environment.NewLine, lines.Take(lines.Length - 1)); // Убираем последнюю строку
+                OpenedFileBytes = Encoding.UTF8.GetBytes(textWithoutLastLine);
+            }
+        }
+        
     }
 }
