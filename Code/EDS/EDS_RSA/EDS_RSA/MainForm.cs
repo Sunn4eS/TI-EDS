@@ -88,9 +88,29 @@ public partial class MainForm : Form
 
     private void getEDSButton_Click(object sender, EventArgs e)
     {
-        hash = EDS.HashFunction(OpenedFileBytes, r);
-        hashTextBox.Text = hash.ToString();
-        eds = MathTools.FastPowMul(hash, d, 1, r);
-        edsTextBox.Text = eds.ToString();
+        if (createRadioButton.Checked)
+        {
+            hash = EDS.HashFunction(OpenedFileBytes, r);
+            hashTextBox.Text = hash.ToString();
+            eds = MathTools.FastPowMul(hash, d, 1, r);
+            edsTextBox.Text = eds.ToString();
+            saveToolStripMenuItem.Enabled = true;
+        }
+
+        if (checkRadioButton.Checked)
+        {
+            if (edsTextBox.Text.Length == 0)
+            {
+                MessageBox.Show("Сначала вычислите ЭЦП для первоначального текста!", "Внимание");
+                return;
+            }
+            hash = EDS.HashFunction(OpenedFileBytes, r);
+            hashTextBox.Text = hash.ToString();
+            var temp = MathTools.FastPowMul(eds, ee, 1, r);
+            string result = temp != hash ? "Подпись не верна!" : "Подпись верна!";
+            MessageBox.Show($"Значение Хэш-образа текста: {hash}{Environment.NewLine}" +
+                            $"Значение Хэш-образа по ключу с ЭЦП: {temp}{Environment.NewLine}" +
+                            $"{result}");
+        }
     }
 }

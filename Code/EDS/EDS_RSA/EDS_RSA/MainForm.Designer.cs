@@ -51,7 +51,11 @@ partial class MainForm
         hashTextBox = new System.Windows.Forms.TextBox();
         EDSLabel = new System.Windows.Forms.Label();
         edsTextBox = new System.Windows.Forms.TextBox();
-        
+        menuStrip1 = new System.Windows.Forms.MenuStrip();
+        toolStripDropDownMenu1 = new System.Windows.Forms.ToolStripDropDownMenu();
+        saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        toolStripDropDownMenu1.SuspendLayout();
         SuspendLayout();
         // 
         // pLabel
@@ -255,13 +259,40 @@ partial class MainForm
         edsTextBox.Size = new System.Drawing.Size(205, 39);
         edsTextBox.TabIndex = 21;
         // 
+        // menuStrip1
+        // 
+        menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+        menuStrip1.Location = new System.Drawing.Point(0, 0);
+        menuStrip1.Name = "menuStrip1";
+        menuStrip1.Size = new System.Drawing.Size(971, 24);
+        menuStrip1.TabIndex = 22;
+        menuStrip1.Text = "menuStrip1";
+        // 
+        // toolStripDropDownMenu1
+        // 
+        toolStripDropDownMenu1.ImageScalingSize = new System.Drawing.Size(24, 24);
+        toolStripDropDownMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { saveToolStripMenuItem, openToolStripMenuItem });
+        toolStripDropDownMenu1.Name = "toolStripDropDownMenu1";
+        toolStripDropDownMenu1.Size = new System.Drawing.Size(241, 101);
+        // 
+        // saveToolStripMenuItem
+        // 
+        saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+        saveToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+        saveToolStripMenuItem.Text = "Сохранить";
+        // 
+        // openToolStripMenuItem
+        // 
+        openToolStripMenuItem.Name = "openToolStripMenuItem";
+        openToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+        openToolStripMenuItem.Text = "Открыть";
+        // 
         // MainForm
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         BackColor = System.Drawing.SystemColors.Control;
         ClientSize = new System.Drawing.Size(971, 654);
-       
         Controls.Add(edsTextBox);
         Controls.Add(EDSLabel);
         Controls.Add(hashTextBox);
@@ -284,13 +315,21 @@ partial class MainForm
         Controls.Add(dLabel);
         Controls.Add(pLabel);
         Controls.Add(qLabel);
+        Controls.Add(menuStrip1);
         Location = new System.Drawing.Point(22, 22);
+        MainMenuStrip = menuStrip1;
         Text = "MainForm";
+        toolStripDropDownMenu1.ResumeLayout(false);
         ResumeLayout(false);
         PerformLayout();
     }
 
-    
+    private System.Windows.Forms.ToolStripDropDownMenu toolStripDropDownMenu1;
+    private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+    private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+
+    private System.Windows.Forms.MenuStrip menuStrip1;
+
 
     private System.Windows.Forms.TextBox hashTextBox;
     private System.Windows.Forms.Label EDSLabel;
