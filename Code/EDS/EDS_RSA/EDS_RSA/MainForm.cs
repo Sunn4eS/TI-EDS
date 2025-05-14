@@ -127,6 +127,7 @@ public partial class MainForm : Form
             MessageBox.Show($"Значение Хэш-образа текста: {hash}{Environment.NewLine}" +
                             $"Значение Хэш-образа по ключу с ЭЦП: {temp}{Environment.NewLine}" +
                             $"{result}");
+            saveToolStripMenuItem.Enabled = true;
         }
     }
 
@@ -143,6 +144,7 @@ public partial class MainForm : Form
             saveToolStripMenuItem.Enabled = false;
         sourceTextBox.Clear();
         hashTextBox.Clear();
+        
     }
     private void openToolStripMenuItem_Click(object sender, EventArgs e)
     {

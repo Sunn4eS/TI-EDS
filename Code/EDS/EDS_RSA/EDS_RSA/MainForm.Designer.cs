@@ -337,7 +337,7 @@ partial class MainForm
         Controls.Add(menuStrip1);
         Location = new System.Drawing.Point(22, 22);
         MainMenuStrip = menuStrip1;
-        Text = "MainForm";
+        Text = "Лабораторная 4 Вариант 1 Бражалович 351004";
         menuStrip1.ResumeLayout(false);
         menuStrip1.PerformLayout();
         ResumeLayout(false);
