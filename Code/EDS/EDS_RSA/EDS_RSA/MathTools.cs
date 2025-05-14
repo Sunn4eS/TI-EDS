@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EDS_RSA
+﻿namespace EDS_RSA
 {
     public static class MathTools
     {
@@ -97,7 +91,7 @@ namespace EDS_RSA
             return (x % p + p) % p; // Убеждаемся, что результат положительный
         }
 
-        private static long ExtendedGcd(long a, long b, out long x, out long y)
+        public static long ExtendedGcd(long a, long b, out long x, out long y)
         {
             if (b == 0)
             {

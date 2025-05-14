@@ -9,7 +9,7 @@ public class EDS
     public static long HashFunction(byte[] textBytes, long r)
     {
         if (textBytes == null || textBytes.Length == 0)
-            throw new Exception("Check your textBytes array");
+            return H0;
         
         long result = MathTools.FastExp(H0 + textBytes[0], 2, r);
         for (int i = 1; i < textBytes.Length; i++)

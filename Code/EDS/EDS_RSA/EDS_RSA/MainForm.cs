@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace EDS_RSA;
 
 public partial class MainForm : Form
@@ -68,13 +70,26 @@ public partial class MainForm : Form
             MessageBox.Show("Ваша закрытая константа D меньше 1 или больше функции эйлера!", "Внимание");
             return;
         }
-       // long gcd = RSA.FindGcd(BigIntegerD, BigIntegerFunctionR);
-        if (MathTools.IsRelativelyPrime(d, euler))
+        if (!MathTools.IsRelativelyPrime(d, euler))
         {
             MessageBox.Show("Ваша закрытая константа D не взаимно простая с функцией Эйлера!", "Внимание");
             return;
         } 
-        ee = MathTools.ModInverse(euler, d);
+        
+       
+        long gcdExt = 0;
+        long x;
+        long y;
+        if (euler > d)
+        {
+            gcdExt = MathTools.ExtendedGcd(euler, d, out x, out y);
+        }
+        else
+        {
+            gcdExt = MathTools.ExtendedGcd(euler, r, out x, out y);
+        }
+        
+        ee = y;
         if (ee < 0)
         {
             ee += euler;
@@ -92,7 +107,7 @@ public partial class MainForm : Form
         {
             hash = EDS.HashFunction(OpenedFileBytes, r);
             hashTextBox.Text = hash.ToString();
-            eds = MathTools.FastPowMul(hash, d, 1, r);
+            eds = MathTools.FastPowMul(hash, ee, 1, r);
             edsTextBox.Text = eds.ToString();
             saveToolStripMenuItem.Enabled = true;
         }
@@ -106,11 +121,43 @@ public partial class MainForm : Form
             }
             hash = EDS.HashFunction(OpenedFileBytes, r);
             hashTextBox.Text = hash.ToString();
-            var temp = MathTools.FastPowMul(eds, ee, 1, r);
+            var temp = MathTools.FastPowMul(eds, d
+                , 1, r);
             string result = temp != hash ? "Подпись не верна!" : "Подпись верна!";
             MessageBox.Show($"Значение Хэш-образа текста: {hash}{Environment.NewLine}" +
                             $"Значение Хэш-образа по ключу с ЭЦП: {temp}{Environment.NewLine}" +
                             $"{result}");
+        }
+    }
+
+    private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (SaveFileDialog.ShowDialog() != DialogResult.Cancel)
+        {
+            File.WriteAllText(SaveFileDialog.FileName, sourceTextBox.Text + Environment.NewLine + $"Подпись: {edsTextBox.Text}");
+        }
+    }
+    private void checkRadioButton_CheckedChanged_1(object sender, EventArgs e)
+    {
+        if (checkRadioButton.Checked)
+            saveToolStripMenuItem.Enabled = false;
+        sourceTextBox.Clear();
+        hashTextBox.Clear();
+    }
+    private void openToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        if (OpenFileDialog.ShowDialog() != DialogResult.Cancel)
+        {
+            sourceTextBox.Text = File.ReadAllText(OpenFileDialog.FileName);
+            if (string.IsNullOrEmpty(sourceTextBox.Text))
+            {
+                OpenedFileBytes = null; // Если текста нет, устанавливаем null
+            }
+            else
+            {
+                OpenedFileBytes = Encoding.UTF8.GetBytes(sourceTextBox.Text);
+            }
+            
         }
     }
 }

@@ -29,6 +29,7 @@ partial class MainForm
     /// </summary>
     private void InitializeComponent()
     {
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
         pLabel = new System.Windows.Forms.Label();
         qLabel = new System.Windows.Forms.Label();
         dLabel = new System.Windows.Forms.Label();
@@ -52,10 +53,13 @@ partial class MainForm
         EDSLabel = new System.Windows.Forms.Label();
         edsTextBox = new System.Windows.Forms.TextBox();
         menuStrip1 = new System.Windows.Forms.MenuStrip();
-        toolStripDropDownMenu1 = new System.Windows.Forms.ToolStripDropDownMenu();
         saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-        toolStripDropDownMenu1.SuspendLayout();
+        fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        OpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+        SaveFileDialog = new System.Windows.Forms.SaveFileDialog();
+
+        menuStrip1.SuspendLayout();
         SuspendLayout();
         // 
         // pLabel
@@ -194,6 +198,7 @@ partial class MainForm
         checkRadioButton.TabStop = true;
         checkRadioButton.Text = "Проверить цифровую подпись";
         checkRadioButton.UseVisualStyleBackColor = true;
+        checkRadioButton.CheckedChanged += checkRadioButton_CheckedChanged_1;
         // 
         // getEDSButton
         // 
@@ -261,31 +266,45 @@ partial class MainForm
         // 
         // menuStrip1
         // 
+        menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
         menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
-        menuStrip1.Location = new System.Drawing.Point(0, 0);
+       menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem });
+       menuStrip1.Location = new System.Drawing.Point(0, 0);
         menuStrip1.Name = "menuStrip1";
-        menuStrip1.Size = new System.Drawing.Size(971, 24);
+        menuStrip1.Size = new System.Drawing.Size(202, 24);
         menuStrip1.TabIndex = 22;
         menuStrip1.Text = "menuStrip1";
-        // 
-        // toolStripDropDownMenu1
-        // 
-        toolStripDropDownMenu1.ImageScalingSize = new System.Drawing.Size(24, 24);
-        toolStripDropDownMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { saveToolStripMenuItem, openToolStripMenuItem });
-        toolStripDropDownMenu1.Name = "toolStripDropDownMenu1";
-        toolStripDropDownMenu1.Size = new System.Drawing.Size(241, 101);
+        
+        fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { this.openToolStripMenuItem, this.saveToolStripMenuItem });
+        fileToolStripMenuItem.Name = "файлToolStripMenuItem";
+        fileToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
+        fileToolStripMenuItem.Text = "Файл";
+        fileToolStripMenuItem.Enabled = true;
         // 
         // saveToolStripMenuItem
         // 
         saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-        saveToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+        saveToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
         saveToolStripMenuItem.Text = "Сохранить";
+        saveToolStripMenuItem.Click += saveToolStripMenuItem_Click;
         // 
         // openToolStripMenuItem
         // 
         openToolStripMenuItem.Name = "openToolStripMenuItem";
-        openToolStripMenuItem.Size = new System.Drawing.Size(240, 32);
+        openToolStripMenuItem.Size = new System.Drawing.Size(170, 32);
         openToolStripMenuItem.Text = "Открыть";
+        openToolStripMenuItem.Click += openToolStripMenuItem_Click;
+        // 
+        // файлToolStripMenuItem
+        // 
+      
+        // поискToolStripMenuItem
+        // 
+       
+        // 
+        // выделитьвсеToolStripMenuItem1
+        // 
+   
         // 
         // MainForm
         // 
@@ -319,12 +338,14 @@ partial class MainForm
         Location = new System.Drawing.Point(22, 22);
         MainMenuStrip = menuStrip1;
         Text = "MainForm";
-        toolStripDropDownMenu1.ResumeLayout(false);
+        menuStrip1.ResumeLayout(false);
+        menuStrip1.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
-
-    private System.Windows.Forms.ToolStripDropDownMenu toolStripDropDownMenu1;
+    
+    //   private System.Windows.Forms.ToolStripDropDownMenu toolStripDropDownMenu1;
+    private ToolStripMenuItem fileToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
     private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
 
@@ -365,6 +386,9 @@ partial class MainForm
     private System.Windows.Forms.Label qLabel;
 
     private System.Windows.Forms.Label pLabel;
+    
+    private System.Windows.Forms.OpenFileDialog OpenFileDialog;
+    private System.Windows.Forms.SaveFileDialog SaveFileDialog;
 
     #endregion
 }
