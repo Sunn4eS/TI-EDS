@@ -9,6 +9,8 @@ namespace EDS_RSA
     public static class MathTools
     {
         
+        public static long FindGcd(long a, long b) => b == 0 ? a : FindGcd(b, a % b);
+
         public static long EulerPhi(long p, long q)
         {
             return (p - 1) * (q - 1);
@@ -69,12 +71,12 @@ namespace EDS_RSA
             return isPrime;
         }
 
-        public static bool IsRelativelyPrime(int a, int b)
+        public static bool IsRelativelyPrime(long a, long b)
         {
             //Если НОД == 1 - то взаимопростые
             while (b != 0)
             {
-                int remainder = a % b;
+                long remainder = a % b;
                 a = b;
                 b = remainder;
             }
